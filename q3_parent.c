@@ -2,6 +2,7 @@
 #include <unistd.h>     // fork, getpid, usleep, execl
 #include <sys/types.h>  // pid_t
 #include <stdlib.h>     // exit, EXIT_FAILURE
+#include <sys/wait.h>   // wait
 
 // PROCESS 1: Parent process
 
@@ -25,9 +26,33 @@ int main(void) {
     } else {
         // Parent process: process 1 (incrementing, multiples of 3)
         printf("Process 1 (parent, PID %d) started\n", getpid());
+        printf("Process 1 waiting for Process 2 (PID %d) to start...\n", pid);
+
+        // Give Process 2 a moment to start
+        sleep(0.1);  // 0.1s delay
+
         long cycle = 0;
+        int status;
+        pid_t result;
         
         while (1) {
+            // Check if Process 2 has finished (non-blocking)
+            result = waitpid(pid, &status, WNOHANG);
+            
+            if (result > 0) {
+                // Process 2 has finished
+                printf("\nProcess 1: Process 2 (PID %d) has finished!\n", pid);
+                if (WIFEXITED(status)) {
+                    printf("Process 1: Process 2 exited with status %d\n", WEXITSTATUS(status));
+                }
+                printf("Process 1: Ending now...\n");
+                break;
+            } else if (result < 0) {
+                perror("waitpid failed");
+                break;
+            }
+            
+            // Continue counting
             if (cycle % 3 == 0) {
                 printf("Process 1 - Cycle number: %ld - %ld is a multiple of 3\n", cycle, cycle);
             } else {

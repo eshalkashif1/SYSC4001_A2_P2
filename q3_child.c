@@ -17,6 +17,14 @@ int main(void) {
         } else {
             printf("Process 2 - Cycle number: %ld\n", cycle);
         }
+
+        // Check if we've reached the exit condition
+        if (cycle <= -500) {
+            printf("\nProcess 2: Reached %ld (lower than -500)\n", cycle);
+            printf("Process 2: Exiting now...\n");
+            exit(0);  // Exit with status 0 (success)
+        }
+
         cycle--;
         sleep(0.5);   // sleep 0.5s to slow the output
     }
