@@ -26,7 +26,7 @@ int main(void) {
         while (1) {
             printf("Process 1 (parent, PID %d): counter = %ld\n", getpid(), counter);
             counter++;
-            usleep(500000);   // sleep 500ms = 0.5s
+            sleep(0.5);   // sleep 0.5s
         }
     }
 
