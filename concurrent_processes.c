@@ -18,7 +18,7 @@ int main(void) {
         while (1) {
             printf("Process 2 (child, PID %d): counter = %ld\n", getpid(), counter);
             counter++;
-            usleep(500000);   // sleep 500ms = 0.5s to slow the output
+            sleep(0.5);   // sleep 0.5s to slow the output
         }
     } else {
         //  Parent process: process 1
