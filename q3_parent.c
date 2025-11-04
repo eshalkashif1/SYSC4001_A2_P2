@@ -18,7 +18,7 @@ int main(void) {
     if (pid == 0) {
         // Child process: execute process2
         printf("Process 1 launching Process 2...\n");
-        execl("./q2_child", "q2_child", NULL);
+        execl("./q3_child", "q3_child", NULL);
         
         // If execl returns, it failed
         perror("execl failed");
@@ -36,7 +36,7 @@ int main(void) {
         pid_t result;
         
         while (1) {
-            // Check if Process 2 has finished (non-blocking)
+            // Check if Process 2 has finished 
             result = waitpid(pid, &status, WNOHANG);
             
             if (result > 0) {
