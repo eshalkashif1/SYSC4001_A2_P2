@@ -1,3 +1,10 @@
+/**
+ *
+ * @file q5_parent.c
+ * @author Emma Wong (101297761)
+ * @author Eshal Kashif (101297950)
+ *
+ */
 
 #include <stdio.h>      // printf
 #include <unistd.h>     // fork, getpid, usleep, execl

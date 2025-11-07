@@ -1,3 +1,11 @@
+/**
+ *
+ * @file q1.c
+ * @author Emma Wong
+ * @author Eshal Kashif
+ *
+ */
+
 #include <stdio.h>      // printf
 #include <unistd.h>     // fork, getpid, usleep
 #include <sys/types.h>  // pid_t
