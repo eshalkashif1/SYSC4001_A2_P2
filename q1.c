@@ -1,8 +1,8 @@
 /**
  *
  * @file q1.c
- * @author Emma Wong
- * @author Eshal Kashif
+ * @author Emma Wong (101297761)
+ * @author Eshal Kashif (101297950)
  *
  */
 
